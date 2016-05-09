@@ -8,7 +8,20 @@ import (
 	"github.com/deis/object-storage-cli/config"
 )
 
+var (
+	debugStrs = []string{"DEIS_DEBUG", "DEBUG"}
+)
+
 func main() {
+	var debug bool
+	for _, str := range debugStrs {
+		valStr := os.Getenv(str)
+		if valStr == "true" || valStr == "1" {
+			debug = true
+			break
+		}
+	}
+
 	app := cli.NewApp()
 	app.Name = "objstorage"
 	app.Usage = "Use a variety of different object storage systems with a single tool"
@@ -20,8 +33,8 @@ func main() {
 		},
 	}
 	app.Commands = []cli.Command{
-		actions.DownloadCommand,
-		actions.UploadCommand,
+		actions.DownloadCommand(debug),
+		actions.UploadCommand(debug),
 	}
 	app.Run(os.Args)
 }
