@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	debugStrs = []string{"DEIS_DEBUG", "DEBUG"}
+	debugStrs = []string{"DEIS_DEBUG"}
 )
 
 func main() {
