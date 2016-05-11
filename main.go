@@ -9,17 +9,14 @@ import (
 )
 
 var (
-	debugStrs = []string{"DEIS_DEBUG"}
+	debugStr = "DEIS_DEBUG"
 )
 
 func main() {
 	var debug bool
-	for _, str := range debugStrs {
-		valStr := os.Getenv(str)
-		if valStr == "true" || valStr == "1" {
-			debug = true
-			break
-		}
+	debugValStr := os.Getenv(debugStr)
+	if debugValStr == "true" || debugValStr == "1" {
+		debug = true
 	}
 
 	app := cli.NewApp()
