@@ -26,16 +26,11 @@ bootstrap:
 build: binary-build
 
 build-all:
-	${DEV_ENV_CMD} gox -verbose \
-	${GO_LDFLAGS} \
-	-os="linux darwin " \
-	-arch="amd64 386" \
-	-output="$(DIST_DIR)/${BINARY_NAME}-latest-{{.OS}}-{{.Arch}}" .
-	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin " -arch="amd64 386" -output="$(DIST_DIR)/deis-latest-{{.OS}}-{{.Arch}}" .
+	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin " -arch="amd64 386" -output="$(DIST_DIR)/${BINARY_NAME}-latest-{{.OS}}-{{.Arch}}" .
 ifdef TRAVIS_TAG
-	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin" -arch="amd64 386" -output="$(DIST_DIR)/${TRAVIS_TAG}/deis-${TRAVIS_TAG}-{{.OS}}-{{.Arch}}" .
+	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin" -arch="amd64 386" -output="$(DIST_DIR)/${TRAVIS_TAG}/${BINARY_NAME}-${TRAVIS_TAG}-{{.OS}}-{{.Arch}}" .
 else
-	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin" -arch="amd64 386" -output="$(DIST_DIR)/${VERSION}/deis-${VERSION}-{{.OS}}-{{.Arch}}" .
+	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin" -arch="amd64 386" -output="$(DIST_DIR)/${VERSION}/${BINARY_NAME}-${VERSION}-{{.OS}}-{{.Arch}}" .
 endif
 
 
