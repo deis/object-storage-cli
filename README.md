@@ -44,3 +44,35 @@ It gets the location information from environment variables, and assumes that an
 - `ACCESS_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/accesskey`)
 - `ACCESS_SECRET_FILE` (`/var/run/secrets/deis/objectstore/creds/secretkey`)
 - `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/bucket`)
+
+# Downloads
+
+Every commit to the `master` branch gets tested and cross-compiled in [Travis CI](https://travis-ci.com/deis/object-storage-cli). The resulting binaries get uploaded to Google Cloud Storage. If you'd like to download the latest build, use the command in one of the sections below appropriate for your system.
+
+## 64 Bit Mac OS X
+
+```console
+curl -o object-storage-cli https://storage.googleapis.com/object-storage-cli/objstorage-latest-darwin-amd64
+./object-storage-cli --version
+```
+
+## 32 Bit Mac OS X
+
+```console
+curl -o object-storage-cli https://storage.googleapis.com/object-storage-cli/objstorage-latest-darwin-386
+./object-storage-cli --version
+```
+
+## 64 Bit Linux
+
+```console
+curl -o object-storage-cli https://storage.googleapis.com/object-storage-cli/objstorage-latest-linux-amd64
+./object-storage-cli --version
+```
+
+## 32 Bit Linux
+
+```console
+curl -o object-storage-cli https://storage.googleapis.com/object-storage-cli/objstorage-latest-linux-386
+./object-storage-cli --version
+```
